@@ -53,7 +53,7 @@ Dựa vào hướng dẫn có trong file hướng dẫn thì ta có thể hiểu
 Tiếp đó cần thực hiện gán địa chỉ MAC của attacker vào địa chỉ IP của B bằng việc sử dụng MAC nguồn và IP nguồn, sau đó gửi đến cho ARP cache của A bằng MAC đích và IP đích.
 Cụ thể đoạn code dưới sẽ làm việc đó :
 
-```python=
+```python
 #!/usr/bin/python3
 from scapy.all import *
 
@@ -93,7 +93,7 @@ Vậy là chúng ta đã thành công trong cuộc tấn công ARP cache bằng 
 - IP của B đã có trong ARP cache của A :
     - Đầu tiên ta ta thực hiện một đoạn code ARP request tương tự như trên với địa chỉ IP nguồn và MAC nguồn là của B và gửi đến A để cho ARP cache lưu trữ thông tin.
     
-    ```python=
+    ```python
     #!/usr/bin/python3
     from scapy.all import *
 
@@ -112,7 +112,7 @@ Vậy là chúng ta đã thành công trong cuộc tấn công ARP cache bằng 
 
     -Tiếp đến ta thực hiện gửi một ARP reply từ terminal attacker với thông tin MAC của attacker gán với địa chỉ của Host B với đoạn code như sau 
     
-    ```python=
+    ```python
     #!/usr/bin/python3
     from scapy.all import *
 
@@ -164,7 +164,7 @@ Ta có ARP gratuitous là một dạng đặc biệt của ARP request dùng khi
 
     - Bây giờ chúng ta sẽ thực hiện đoạn code ARP gratuitous với các đặc điểm kể trên như sau:
 
-    ```python=
+    ```python
     #!/usr/bin/python3
     from scapy.all import *
 
@@ -209,7 +209,7 @@ A và B sẽ giao tiếp với nhau bằng telnet. Mục tiêu của attacker s�
 
 - Step 1: Thực hiện ARP attack bằng ARP request trên cả Host A và Host B. Với ARP cache của A thì sẽ lưu thông tin IP của B gán với MAC của attacker còn với ARP cache của B thì sẽ lưu thông tin của IP của A gán với MAC của attacker. Thực hiện lặp lại việc gửi ARP request đó mỗi 5 giây. Cụ thể ta sẽ thực hiện đoạn code như sau : 
 
-    ```python=
+    ```python
     #!/usr/bin/python3
     from time import sleep
     from scapy.all import *
@@ -297,7 +297,7 @@ A và B sẽ giao tiếp với nhau bằng telnet. Mục tiêu của attacker s�
     - Yêu cầu tiếp theo, thực hiện chương trình sniff&spoof ở phía attacker để bắt các gói tin gửi từ A đến B và thay đổi thông tin. Còn gói tin phản hồi từ B về A sẽ giữ nguyên. 
     Đề bài đã cho sẵn chúng ta sườn code sniff&spoof, bây giờ chúng ta chỉ việc thực hiện thay đổi data từ A đến B và filter một cách phù hợp để nó không ảnh hưởng đến hiệu suất nữa là mọi việc được giải quyết. Cụ thể code sẽ thực hiện như sau :
 
-    ```python=
+    ```python
     #!/usr/bin/env python3
     from scapy.all import *
 
@@ -391,7 +391,7 @@ A và B sẽ giao tiếp với nhau bằng telnet. Mục tiêu của attacker s�
 
 - Tiếp theo ta sẽ thực hiện MITM attack vào netcat thay đổi nội dung xuất hiện nếu là tên mình thì sẽ thay đổi thành một chuỗi `A` tương ứng với độ dài, ta sẽ thực hiện bằng đoạn code như sau :
 
-    ```python=
+    ```python
     #!/usr/bin/env python3
     from scapy.all import *
 
